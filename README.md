@@ -1,8 +1,8 @@
-# CRUD_CinemaManager_ASP.NET_MVC
-Projeto desenvolvido em ASP.NET Core MVC com EF (Entity Framework).
+# CinemaManager_ASP.NET_MVC
+CRUD desenvolvido em ASP.NET Core MVC com EF (Entity Framework).
 
 ## Description
-Trata-se de um CRUD de Gerenciamento de Cinema, onde é possível adicionar filmes, salas e sessões. Os filmes podem ser cadastrados, atualizados e removidos. Um filme só pode ser removido se não estiver vinculado a uma sessão ativa. As salas são para mera ilustração. Já as sessões, também podem ser cadastradas e removidas. Uma sessão não pode ser removida se faltar menos de 10 dias para sua exibição. Todas as sessões são vinculadas a um filme e uma sala.
+CRUD de Gerenciamento de Cinema, onde é possível adicionar filmes, salas e sessões. Os filmes podem ser cadastrados, atualizados e removidos. Um filme só pode ser removido se não estiver vinculado a uma sessão ativa. As salas são para mera ilustração. Já as sessões, também podem ser cadastradas e removidas. Uma sessão não pode ser removida se faltar menos de 10 dias para sua exibição. Todas as sessões são vinculadas a um filme e uma sala.
 
 ## Installation
 - SQL Server
