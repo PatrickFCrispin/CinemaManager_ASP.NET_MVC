@@ -28,8 +28,7 @@ CRUD de Gerenciamento de Cinema, onde é possível adicionar filmes, salas e ses
 		"insert into Theaters values ('Sala 3', 60, CURRENT_TIMESTAMP)"
 
 ## Usage
-- Compilar o projeto no Visual Studio;
+- Compilar o projeto no Visual Studio
 	- Clean e Rebuild.
-- Rodar o projeto (F5).
+- Rodar o projeto.
 - Fazer o login com a conta adm criada inicialmente.
-- Realizar as operações CRUD e se divertir.
