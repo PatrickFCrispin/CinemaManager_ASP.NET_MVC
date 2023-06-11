@@ -1,4 +1,4 @@
-# CinemaManager_ASP.NET_MVC
+# Cinema_Manager_ASP.NET_MVC
 CRUD desenvolvido em ASP.NET Core MVC com EF (Entity Framework) e banco SQL Server (mssql).
 
 ## Description
