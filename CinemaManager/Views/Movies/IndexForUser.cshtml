@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MoviesModel>
+@{
+    ViewData["Title"] = "Filmes";
+}
+
+<h1 class="display-4">Filmes</h1>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th scope="col" style="width: 25%">Título</th>
+            <th scope="col" style="width: 50%">Descrição</th>
+            <th scope="col">Duração</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model is not null && Model.Any())
+        {
+            foreach (var movie in Model)
+            {
+                <tr class="align-middle">
+                    <td>@movie.Title</td>
+                    <td>@movie.Description</td>
+                    <td>@movie.Duration</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

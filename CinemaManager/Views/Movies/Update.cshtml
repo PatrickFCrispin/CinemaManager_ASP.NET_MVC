@@ -1,0 +1,47 @@
+﻿@model MoviesModel
+@{
+    ViewData["Title"] = "Editar Filme";
+}
+
+<h1 class="display-4">Editar Filme</h1>
+
+@if (TempData["ErrorMessage"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <span>@TempData["ErrorMessage"]</span>
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+    </div>
+}
+
+<form asp-controller="Movies" asp-action="Update" method="post">
+    <div class="form-group">
+        <label for="imageLink">Imagem</label>
+        <input type="text" asp-for="Image" class="form-control" id="imageLink" placeholder="Link da Imagem">
+        @Html.ValidationMessageFor(x => x.Image)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" asp-for="Title" class="form-control" id="title" placeholder="Título do filme">
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="description">Descrição</label>
+        <input type="text" asp-for="Description" class="form-control" id="description" placeholder="Descrição do filme">
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="duration">Duração</label>
+        <input type="datetime" asp-for="Duration" class="form-control" id="duration" placeholder="Ex.: 30min ou 1h ou 1h 30min">
+        @Html.ValidationMessageFor(x => x.Duration)
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary form-control">Atualizar</button>
+    <a class="btn btn-link form-control" role="button" asp-controller="Movies" asp-action="Index">Voltar</a>
+</form>

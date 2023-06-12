@@ -1,0 +1,16 @@
+﻿@model MoviesModel
+@{
+    ViewData["Title"] = "Remover Filme";
+}
+
+<br />
+
+<form asp-controller="Movies" asp-action="Remove" asp-route-id="@Model.Id" method="post">
+    <div class="text-center">
+        <h3>Tem certeza que deseja remover o filme (@Model.Title)?</h3>
+        <br />
+
+        <a class="btn btn-link" role="button" asp-controller="Movies" asp-action="Index">Cancelar</a>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+    </div>
+</form>

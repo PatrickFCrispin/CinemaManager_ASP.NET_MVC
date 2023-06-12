@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MoviesModel>
+@{
+    ViewData["Title"] = "Filmes";
+}
+
+<h1 class="display-4">Filmes</h1>
+
+@if (TempData["SuccessMessage"] is not null)
+{
+    <div class="alert alert-success" role="alert">
+        <span>@TempData["SuccessMessage"]</span>
+        <button type="button" class="btn btn-success btn-sm close-alert" arial-label="close">X</button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <span>@TempData["ErrorMessage"]</span>
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+    </div>
+}
+
+<div>
+    <a class="btn btn-primary" role="button" asp-controller="Movies" asp-action="Create">Novo Filme</a>
+</div>
+<br />
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th scope="col" style="width: 25%">Título</th>
+            <th scope="col" style="width: 50%">Descrição</th>
+            <th scope="col">Duração</th>
+            <th scope="col">Operações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model is not null && Model.Any())
+        {
+            foreach (var movie in Model)
+            {
+                <tr class="align-middle">
+                    <td>@movie.Title</td>
+                    <td>@movie.Description</td>
+                    <td>@movie.Duration</td>
+                    <td>
+                        <div>
+                            <a class="btn btn-primary" role="button" asp-controller="Movies" asp-action="Update" asp-route-id="@movie.Id">Editar</a>
+                            <a class="btn btn-danger" role="button" asp-controller="Movies" asp-action="ConfirmRemove" asp-route-id="@movie.Id">Remover</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

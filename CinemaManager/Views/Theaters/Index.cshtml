@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TheatersModel>
+@{
+    ViewData["Title"] = "Salas";
+}
+
+<h1 class="display-4">Salas</h1>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th scope="col" style="width: 75%">Nome</th>
+            <th scope="col">Quantidade de assentos</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model is not null && Model.Any())
+        {
+            foreach (var theater in Model)
+            {
+                <tr class="align-middle">
+                    <td>@theater.Name</td>
+                    <td>@theater.NumberOfSeats</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

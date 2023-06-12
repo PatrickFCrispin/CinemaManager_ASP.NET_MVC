@@ -1,0 +1,77 @@
+﻿@using CinemaManager.Enums
+@model SessionModel
+@{
+    ViewData["Title"] = "Nova Sessão";
+}
+
+<h1 class="display-4">Nova Sessão</h1>
+
+@if (TempData["ErrorMessage"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <span>@TempData["ErrorMessage"]</span>
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+    </div>
+}
+
+<form asp-controller="Session" asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="date">Data</label>
+        <input type="date" asp-for="Date" class="form-control" id="date" placeholder="Data da sessão">
+        @Html.ValidationMessageFor(x => x.Date)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="startTime">Horário inicial</label>
+        <input type="datetime-local" asp-for="StartTime" class="form-control" id="startTime" placeholder="Horário do início do filme">
+        @Html.ValidationMessageFor(x => x.StartTime)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="ticketValue">Valor do ingresso</label>
+        <input type="text" asp-for="TicketValue" class="form-control" id="ticketValue" placeholder="Ex.: 20 ou 20,00 ou R$ 20,00">
+        @Html.ValidationMessageFor(x => x.TicketValue)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="typeOfAnimation">Tipo da animação</label>
+        <select asp-for="TypeOfAnimation" class="form-control" id="typeOfAnimation">
+            <option value="">Selecione</option>
+            <option value="@TypeOfAnimationEnum.ThreeDimensional">3D</option>
+            <option value="@TypeOfAnimationEnum.TwoDimensional">2D</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.TypeOfAnimation)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="typeOfAudio">Tipo da áudio</label>
+        <select asp-for="AudioType" class="form-control" id="typeOfAudio">
+            <option value="">Selecione</option>
+            <option value="@AudioTypeEnum.Original">Originial</option>
+            <option value="@AudioTypeEnum.Dubbed">Dublado</option>
+        </select>
+        @Html.ValidationMessageFor(x => x.AudioType)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="movie">Filme</label>
+        <input type="text" asp-for="MovieTitle" class="form-control" id="movie" placeholder="Título do filme">
+        @Html.ValidationMessageFor(x => x.MovieTitle)
+    </div>
+    <br />
+
+    <div class="form-group">
+        <label for="theater">Sala</label>
+        <input type="text" asp-for="TheaterName" class="form-control" id="theater" placeholder="Nome da sala">
+        @Html.ValidationMessageFor(x => x.TheaterName)
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary form-control">Adicionar</button>
+    <a class="btn btn-link form-control" role="button" asp-controller="Session" asp-action="Index">Voltar</a>
+</form>

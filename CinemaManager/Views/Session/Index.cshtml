@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SessionModel>
+@{
+    ViewData["Title"] = "Sessões";
+}
+
+<h1 class="display-4">Sessões</h1>
+
+@if (TempData["SuccessMessage"] is not null)
+{
+    <div class="alert alert-success" role="alert">
+        <span>@TempData["SuccessMessage"]</span>
+        <button type="button" class="btn btn-success btn-sm close-alert" arial-label="close">X</button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        <span>@TempData["ErrorMessage"]</span>
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="close">X</button>
+    </div>
+}
+
+<div>
+    <a class="btn btn-primary" role="button" asp-controller="Session" asp-action="Create">Nova Sessão</a>
+</div>
+<br />
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Horário Início</th>
+            <th scope="col">Horário Fim</th>
+            <th scope="col">Valor Ingresso</th>
+            <th scope="col">Tipo Animação</th>
+            <th scope="col">Tipo de Audio</th>
+            <th scope="col">Filme</th>
+            <th scope="col">Sala</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model is not null && Model.Any())
+        {
+            foreach (var session in Model)
+            {
+                <tr class="align-middle">
+                    <td>@session.Date.ToString("MM/dd/yyyy")</td>
+                    <td>@session.StartTime</td>
+                    <td>@session.EndTime</td>
+                    <td>@session.TicketValue</td>
+                    <td>@(session.TypeOfAnimation == CinemaManager.Enums.TypeOfAnimationEnum.ThreeDimensional ? "3D" : "2D")</td>
+                    <td>@(session.AudioType == CinemaManager.Enums.AudioTypeEnum.Original ? "Original" : "Dublado")</td>
+                    <td>@session.MovieTitle</td>
+                    <td>@session.TheaterName</td>
+                    <td>
+                        <div>
+                            <a class="btn btn-danger" role="button" asp-controller="Session" asp-action="ConfirmRemove" asp-route-id="@session.Id">Remover</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

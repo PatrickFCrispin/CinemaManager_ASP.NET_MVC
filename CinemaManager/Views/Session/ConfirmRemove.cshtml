@@ -1,0 +1,16 @@
+﻿@model SessionModel
+@{
+    ViewData["Title"] = "Remover Sessão";
+}
+
+<br />
+
+<form asp-controller="Session" asp-action="Remove" asp-route-id="@Model.Id" method="post">
+    <div class="text-center">
+        <h3>Tem certeza que deseja remover a sessão (@Model.Id)?</h3>
+        <br />
+
+        <a class="btn btn-link" role="button" asp-controller="Session" asp-action="Index">Cancelar</a>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+    </div>
+</form>

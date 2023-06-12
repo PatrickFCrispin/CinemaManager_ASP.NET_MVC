@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SessionModel>
+@{
+    ViewData["Title"] = "Sessões";
+}
+
+<h1 class="display-4">Sessões</h1>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Horário Início</th>
+            <th scope="col">Horário Fim</th>
+            <th scope="col">Valor Ingresso</th>
+            <th scope="col">Tipo Animação</th>
+            <th scope="col">Tipo de Audio</th>
+            <th scope="col">Filme</th>
+            <th scope="col">Sala</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model is not null && Model.Any())
+        {
+            foreach (var session in Model)
+            {
+                <tr class="align-middle">
+                    <td>@session.Date</td>
+                    <td>@session.StartTime</td>
+                    <td>@session.EndTime</td>
+                    <td>@session.TicketValue</td>
+                    <td>@(session.TypeOfAnimation == CinemaManager.Enums.TypeOfAnimationEnum.ThreeDimensional ? "3D" : "2D")</td>
+                    <td>@(session.AudioType == CinemaManager.Enums.AudioTypeEnum.Original ? "Original" : "Dublado")</td>
+                    <td>@session.MovieTitle</td>
+                    <td>@session.TheaterName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
